@@ -1,10 +1,14 @@
 package it.corsojava;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Locale;
 
 public class Main {
 	public static void main(String[] args) {
@@ -59,5 +63,39 @@ public class Main {
 			// mm: minuti
 			// ss: secondi
 		System.out.println(t.format(dtf));
+		
+		
+		
+		
+		
+		
+		
+		
+		//esempio di errori di approssimazione usando il double 
+		System.out.println("\n\n\nDOUBLE:");
+		double ndouble=0.1d;		
+		for (int i=0;i<100;i++)
+		{
+			System.out.println(ndouble);
+			ndouble+=0.1d;	//aggiungo sempre 0.1, quindi mi aspetto 0.2,0.3,0.4 ...
+		}
+		
+		
+		//con il BigDecimal non ho problemi di approssimazione:
+		System.out.println("\n\n\nBIGDECIMAL:");
+		BigDecimal nbd=new BigDecimal("0.1");
+		for (int i=0;i<100;i++)
+		{
+			System.out.println(nbd.toString());
+			nbd=nbd.add(new BigDecimal("0.1"));
+		}
+		
+		System.out.println("\n\n\nFormattazione:");
+		//BigDecimal per i prezzi
+		DecimalFormat df1=new DecimalFormat("#,###.00 €");
+		BigDecimal nd=new BigDecimal("3212.30");
+		System.out.println(df1.format(nd));
+		
 	}
+	
 }
