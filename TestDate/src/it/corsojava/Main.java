@@ -2,6 +2,7 @@ package it.corsojava;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
@@ -44,5 +45,19 @@ public class Main {
 			System.out.println("Data non valida: "+e.getMessage());			
 		}
 		
+		
+		//dichiarazione di un'ora generica:
+		LocalTime t=LocalTime.of(13,50,20);
+		
+		//recupero l'ora corrente
+		LocalTime t1=LocalTime.now();
+		
+		//formattazione di un'ora
+		DateTimeFormatter dtf=DateTimeFormatter.ofPattern("hh:mm:ss");	  
+			// hh: ore (formato 12)
+			// HH: ore (formato 24)
+			// mm: minuti
+			// ss: secondi
+		System.out.println(t.format(dtf));
 	}
 }
